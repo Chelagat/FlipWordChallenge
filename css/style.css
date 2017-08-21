@@ -67,3 +67,10 @@ h1{
 input{
   font-family: 'Montserrat', sans-serif;
 }
+
+#getStarted {
+ -webkit-appearance: none;
+  width: 13%;
+  border-radius: 100%;
+
+}
