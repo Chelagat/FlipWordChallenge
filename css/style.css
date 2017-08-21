@@ -63,14 +63,6 @@ h1{
   display: none !important;
 }
 
-form {
-	background: #fafafa;
-	padding: 20px;
-	width: 400px;
-	margin: 0 auto;
-	border: 1px solid #ffe2e3;
-}
-
 input{
   font-family: 'Montserrat', sans-serif;
 }

@@ -1,2 +1,4 @@
 1. Implement associations with fixed # of buttons
-
+2. Generalize to any number of BUTTONS
+3. Add option for user to choose # of BUTTONS
+4. Add win message

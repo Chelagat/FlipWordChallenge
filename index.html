@@ -12,19 +12,9 @@
       <h1> Welcome to FlipButton 2.0 </h1>
       <h2> Please enter the number of buttons for this round : </h2>
       <input id= "numButtons" type="text"><br>
-      <button onclick="validate()" >"Let's Go!"</button>
+      <button onclick="initialize()" >"Let's Go!"</button>
 
     </div>
-
-    <script>
-
-    function validate() {
-       numButtons = document.getElementById("numButtons").value;
-       initialize(numButtons);
-    }
-
-    </script>
-
     <div id= "message" class="hidden">
       <h1> YOU WON!!</h1>
     </div>

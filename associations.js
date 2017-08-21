@@ -4,54 +4,58 @@ ASSOCIATION_MAP = {};
 BUTTONS = new Array();
 OFF_COLOR = 'gray';
 ON_COLOR = 'gold';
+DEFAULT_NUM = 10;
 
 function initialize(num_buttons){
-  document.getElementById('introduction').classList.add('hidden');
-  document.getElementsByClassName('button-area')[0].classList.remove('hidden');
-  NUM_BUTTONS = parseInt(num_buttons);
-  console.log(NUM_BUTTONS);
-  initializeButtons();
+    input = document.getElementById("numButtons").value;
+    NUM_BUTTONS = input == ""? DEFAULT_NUM: parseInt(input);
+    NUM_BUTTONS = NUM_BUTTONS < 1? DEFAULT_NUM: NUM_BUTTONS;
+    HORIZONTAL_FACTOR = Math.floor(Math.sqrt(NUM_BUTTONS));
+    console.log('HORIZONTAL_FACTOR', HORIZONTAL_FACTOR);
+    document.getElementById('introduction').classList.add('hidden');
+    document.getElementsByClassName('button-area')[0].classList.remove('hidden');
+    initializeButtons();
+
 }
 
 function initializeButtons(){
     for (i=0; i < NUM_BUTTONS;i++){
-          let button = document.createElement("button");
-          let button_div = document.getElementsByClassName("button-area")[0];
-          button.innerHTML = i+1;
-          width = button_div.offsetWidth / HORIZONTAL_FACTOR;
-          width_in_pixels = width + "px";
-          button.style.width = width_in_pixels;
-          button.addEventListener("click", flipState);
-          button_div.appendChild(button);
-          BUTTONS.push(button);
+        let button = document.createElement("button");
+        let button_div = document.getElementsByClassName("button-area")[0];
+        button.innerHTML = i+1;
+        width = button_div.offsetWidth / HORIZONTAL_FACTOR;
+        width_in_pixels = width + "px";
+        button.style.width = width_in_pixels;
+        button.addEventListener("click", flipState);
+        button_div.appendChild(button);
+        BUTTONS.push(button);
 
     }
     for(i=0; i< NUM_BUTTONS; i++){
-      findPartner(i);
+       findPartner(i);
     }
-    console.log(ASSOCIATION_MAP);
 }
 
 function validateForm(){
-  console.log("validate");
-  document.getElementById('introduction').classList.add('hidden');
+    console.log("validate");
+    document.getElementById('introduction').classList.add('hidden');
 }
 
 function flipState(event){
-   let targetElement = event.target;
-   index = parseInt(targetElement.innerHTML) - 1;
-   let partnerElement = ASSOCIATION_MAP[index];
-   flipColor(targetElement);
-   flipColor(partnerElement);
-   if (hasWon()){
-     let audio = new Audio('ta-da.mp3');
-     audio.play();
-     document.getElementsByClassName("button-area")[0].classList.add('hidden');
-     document.getElementById("message").classList.remove('hidden');
-   }
+     let targetElement = event.target;
+     index = parseInt(targetElement.innerHTML) - 1;
+     let partnerElement = ASSOCIATION_MAP[index];
+     flipColor(targetElement);
+     flipColor(partnerElement);
+     if (gameWon()){
+         let audio = new Audio('ta-da.mp3');
+         audio.play();
+         document.getElementsByClassName("button-area")[0].classList.add('hidden');
+         document.getElementById("message").classList.remove('hidden');
+     }
 }
 
-function hasWon(){
+function gameWon(){
   let numOffSwitches = 0;
   for (i=0; i<BUTTONS.length; i++){
     let button =  BUTTONS[i];
