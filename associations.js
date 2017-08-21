@@ -4,7 +4,7 @@ ASSOCIATION_MAP = {};
 BUTTONS = new Array();
 OFF_COLOR = 'gray';
 ON_COLOR = 'gold';
-DEFAULT_NUM = 10;
+DEFAULT_NUM = 4;
 
 function initialize(num_buttons){
     input = document.getElementById("numButtons").value;
