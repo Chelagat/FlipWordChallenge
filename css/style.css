@@ -1,39 +1,17 @@
-h3 {
-  text-align: center;
-  max-width: 320px;
-}
 .button-area {
-  margin: 10px auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 25%;
-  a {
-   background: #999;
-    padding: 1em 2.4em;
-    font-size: .9em;
-    margin: 1em;
-    color: white;
-    text-decoration: none;
-    flex-grow: 1;
-    text-align: center;
-  }
+  max-width: 50%;
+  max-height: 50%;
+  height: calc(100vh - 100px);
+  width: calc(100vw);
 }
 
-a{
-   background: #999;
-    padding: 1em 2.4em;
-    font-size: .9em;
-    margin: 1em;
-    color: white;
-    text-decoration: none;
-    flex-grow: 1;
-    text-align: center;
-  }
-
 button{
-   background: #999;
+   background-color: gold;
     padding: 1em 2.4em;
     font-size: .9em;
     margin: 1em;
@@ -44,27 +22,48 @@ button{
   }
 
 
-.button-area-line {
-  margin: 10px auto;
-  display: -webkit-box;   
-  display: -moz-box;  
-  display: -ms-flexbox; 
-  display: -webkit-flex; 
+#message{
+  height: calc(100vh - 100px);
+  margin-top: 100px;
   display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  max-width: 90%;
-  a {
-   background: #999;
-    padding: 1em;
-    font-size: .9em;
-    margin: .3em;
-    color: white;
-    text-decoration: none;
-    flex-grow: 1;
-    text-align: center;
-  }
+  width: calc(100vw);
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+#introduction{
+  height: calc(100vh - 100px);
+  margin-top: 100px;
+  display: flex;
+  width: calc(100vw);
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h2{
+	/*height:50px;*/
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15pt;
+  color: #696969;
+}
+
+
+h1{
+  padding: 20px 20px 20px 20px;
+  font-family: 'Merriweather', serif;
+  font-size: 50pt;
+  border-bottom-color: #696969;
+  border-bottom-style: solid;
+
+}
+
+.hidden{
+  display: none !important;
+}
+
+input{
+  font-family: 'Montserrat', sans-serif;
 }

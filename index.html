@@ -4,16 +4,23 @@
     <meta charset="utf-8">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <script type="text/javascript" src="associations.js"></script>
   </head>
   <body>
-    <h3>6 buttons</h3>
-<div class="button-area">
-  <button>Button 1</button>
-  <button>Button 1</button>
-  <button>Button 1</button>
-  <button>Button 1</button>
-  <button>Button 1</button>
-  <button>Button 1</button>
-</div>
+    <div id="introduction">
+      <h1> Welcome to FlipButton 2.0 </h1>
+      <h2> Please enter the number of buttons for this round : </h2>
+      <input id= "numButtons" type="text"><br>
+      <button onclick="initialize()" >"Let's Go!"</button>
+
+    </div>
+    <div id= "message" class="hidden">
+      <h1> YOU WON!!</h1>
+    </div>
+
+    <div class="button-area hidden">
+    </div>
+
   </body>
 </html>
