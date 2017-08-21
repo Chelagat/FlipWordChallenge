@@ -1,0 +1,50 @@
+@import "compass/css3";
+
+h3 {
+  text-align: center;
+  max-width: 320px;
+}
+.button-area {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 320px;
+  a {
+   background: #999;
+    padding: 1em 2.4em;
+    font-size: .9em;
+    margin: 1em;
+    color: white;
+    text-decoration: none;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+
+.button-area-line {
+  margin: 10px auto;
+  display: -webkit-box;   
+  display: -moz-box;  
+  display: -ms-flexbox; 
+  display: -webkit-flex; 
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  max-width: 90%;
+  a {
+   background: #999;
+    padding: 1em;
+    font-size: .9em;
+    margin: .3em;
+    color: white;
+    text-decoration: none;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
