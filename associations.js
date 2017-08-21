@@ -6,6 +6,7 @@ BUTTONS = new Array();
 window.addEventListener('load', initializeButtons);
 
 function initializeButtons(){
+    console.log("here");
     for (i=0; i < NUM_BUTTONS;i++){
           let button = document.createElement("button");
           let button_div = document.getElementsByClassName("button-area")[0];
@@ -17,20 +18,17 @@ function initializeButtons(){
           button_div.appendChild(button);
           BUTTONS.push(button);
 
-     }
+    }
     for(i=0; i< NUM_BUTTONS; i++){
-       findPartner(i);
-     }
-
+      findPartner(i);
+    }
     console.log(ASSOCIATION_MAP);
 }
 
-
-
 function flipState(event){
    let targetElement = event.target;
-   let index = parseInt(targetElement.innerHTML) - 1;
-   var partnerElement = ASSOCIATION_MAP[index];
+   index = parseInt(targetElement.innerHTML) - 1;
+   let partnerElement = ASSOCIATION_MAP[index];
    flipColor(targetElement);
    flipColor(partnerElement);
    if (hasWon()){
@@ -52,6 +50,7 @@ function hasWon(){
   return (numOffSwitches == BUTTONS.length);
 }
 
+
 function flipColor(element){
   if (element.style.backgroundColor == 'red'){
       element.style.backgroundColor = 'gray';
@@ -59,12 +58,13 @@ function flipColor(element){
       element.style.backgroundColor = 'red';
   }
 }
+
 function findPartner(index){
     while(true) {
-    let curr_index = (Math.floor(Math.random() * (NUM_BUTTONS)) + 1) -1;
-    if (curr_index != index ){
-        ASSOCIATION_MAP[index] = BUTTONS[curr_index];
-        break;
+      let curr_index = (Math.floor(Math.random() * (NUM_BUTTONS)) + 1) -1;
+      if (curr_index != index ){
+          ASSOCIATION_MAP[index] = BUTTONS[curr_index];
+          break;
+      }
     }
-  }
 }
