@@ -12,14 +12,15 @@
       <h1> Welcome to FlipButton 2.0 </h1>
       <h2>The task is simple: switch off all the buttons before time runs out!</h2>
       <h2> Please enter your name and the number of buttons to switch off in this round: </h2>
-      <input id="playerName" type= "text" value="your name"><br>
-      <input id= "numButtons" type="text" value="number of buttons"><br>
+      <input id="playerName" type= "text" placeholder="your name"><br>
+      <input id= "numButtons" type="text" placeholder="number of buttons"><br>
+      <input id="duration" type="text" placeholder="set timer (seconds)"><br>
       <button id = "getStarted" onclick="initialize()" >"Let's Go!"</button>
 
     </div>
     <div id= "message" class="hidden">
-      <h1 id = "win"></h1>
-      <h1 id = "lose"></h1>
+      <h1 id = "header_1"></h1>
+      <h1 id = "header_2"></h1>
     </div>
 
     <h2 id="timer"><h2>

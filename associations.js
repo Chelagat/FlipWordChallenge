@@ -11,6 +11,7 @@ let timerElem = document.getElementById('timer');
 function initialize(num_buttons){
     buttonsInput = document.getElementById("numButtons").value;
     PLAYER_NAME = document.getElementById("playerName").value;
+    DURATION = document.getElementById("duration").value;
     NUM_BUTTONS = buttonsInput == ""? DEFAULT_NUM: parseInt(buttonsInput);
     NUM_BUTTONS = NUM_BUTTONS < 1? DEFAULT_NUM: NUM_BUTTONS;
     HORIZONTAL_FACTOR = Math.floor(Math.sqrt(NUM_BUTTONS));
@@ -40,12 +41,14 @@ function endGame(playerWon){
     let audio = new Audio('ta-da.mp3');
     audio.play();
     document.getElementById("message").classList.remove('hidden');
-    document.getElementById("win").innerHTML = "Good job, "+PLAYER_NAME+"!";
+    document.getElementById("header_1").innerHTML = "You Won!"
+    document.getElementById("header_2").innerHTML = "Good job,"+PLAYER_NAME+"!";
   }else{
     let audio = new Audio('you-lose.mp3');
     audio.play();
     document.getElementById("message").classList.remove('hidden');
-    document.getElementById("lose").innerHTML = "Better luck next time, "+PLAYER_NAME+"!";
+    document.getElementById("header_1").innerHTML = "You Lost :("
+    document.getElementById("header_2").innerHTML = "Better luck next time, "+PLAYER_NAME+"!";
   }
 
 }
