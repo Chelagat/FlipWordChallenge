@@ -9,20 +9,18 @@
   </head>
   <body>
     <div id="introduction">
-      <h1> Welcome to FlipWord 2.0 </h1>
+      <h1> Welcome to FlipButton 2.0 </h1>
       <h2> Please enter the number of buttons for this round : </h2>
-      <form name="myForm" action='#'>
-          <input type="text" name="num_buttons">
-          <input type="submit" value="Let's Go!" onclick="validateForm(this.form);"> <br>
-      </form>
+      <input id= "numButtons" type="text"><br>
+      <button onclick="validate()" >"Let's Go!"</button>
+
     </div>
 
     <script>
 
-    function validateForm(form) {
-      numButtons = form.elements['num_buttons'].value;
-      console.log("Num", numButtons);
-      initialize(numButtons);
+    function validate() {
+       numButtons = document.getElementById("numButtons").value;
+       initialize(numButtons);
     }
 
     </script>
