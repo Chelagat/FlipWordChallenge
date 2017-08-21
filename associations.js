@@ -1,12 +1,19 @@
-NUM_BUTTONS = 20;
+NUM_BUTTONS = 0;
 HORIZONTAL_FACTOR = 4;
 ASSOCIATION_MAP = {};
 BUTTONS = new Array();
+OFF_COLOR = 'gray';
+ON_COLOR = 'gold';
 
-window.addEventListener('load', initializeButtons);
+function initialize(num_buttons){
+  document.getElementById('introduction').classList.add('hidden');
+  document.getElementsByClassName('button-area')[0].classList.remove('hidden');
+  NUM_BUTTONS = parseInt(num_buttons);
+  console.log(NUM_BUTTONS);
+  initializeButtons();
+}
 
 function initializeButtons(){
-    console.log("here");
     for (i=0; i < NUM_BUTTONS;i++){
           let button = document.createElement("button");
           let button_div = document.getElementsByClassName("button-area")[0];
@@ -23,6 +30,11 @@ function initializeButtons(){
       findPartner(i);
     }
     console.log(ASSOCIATION_MAP);
+}
+
+function validateForm(){
+  console.log("validate");
+  document.getElementById('introduction').classList.add('hidden');
 }
 
 function flipState(event){
@@ -43,7 +55,7 @@ function hasWon(){
   let numOffSwitches = 0;
   for (i=0; i<BUTTONS.length; i++){
     let button =  BUTTONS[i];
-    if (button.style.backgroundColor == 'red'){
+    if (button.style.backgroundColor == OFF_COLOR){
       numOffSwitches++;
     }
   }
@@ -52,10 +64,10 @@ function hasWon(){
 
 
 function flipColor(element){
-  if (element.style.backgroundColor == 'red'){
-      element.style.backgroundColor = 'gray';
+  if (element.style.backgroundColor == OFF_COLOR){
+      element.style.backgroundColor = ON_COLOR;
   }else{
-      element.style.backgroundColor = 'red';
+      element.style.backgroundColor = OFF_COLOR;
   }
 }
 

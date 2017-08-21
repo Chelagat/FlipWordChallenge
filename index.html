@@ -5,13 +5,35 @@
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <script type="text/javascript" src="associations.js"></script>
   </head>
   <body>
+    <div id="introduction">
+      <h1> Welcome to FlipWord 2.0 </h1>
+      <h2> Please enter the number of buttons for this round : </h2>
+      <form name="myForm" action='#'>
+          <input type="text" name="num_buttons">
+          <input type="submit" value="Let's Go!" onclick="validateForm(this.form);"> <br>
+      </form>
+    </div>
+
+    <script>
+
+    function validateForm(form) {
+      numButtons = form.elements['num_buttons'].value;
+      console.log("Num", numButtons);
+      initialize(numButtons);
+    }
+
+    </script>
+
     <div id= "message" class="hidden">
       <h1> YOU WON!!</h1>
     </div>
-    <div class="button-area">
+
+    <div class="button-area hidden">
     </div>
-    <script src="associations.js"></script>
+
+
   </body>
 </html>
