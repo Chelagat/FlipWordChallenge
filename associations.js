@@ -4,16 +4,24 @@ ASSOCIATION_MAP = {};
 BUTTONS = new Array();
 OFF_COLOR = 'gray';
 ON_COLOR = 'gold';
-DEFAULT_NUM = 4;
-DURATION = 10;
+DEFAULT_NUM_BUTTONS = 4;
+DEFAULT_NUM_ASSOCIATIONS = 1;
+DURATION = 10
+DEFAULT_DURATION = 30
+NUM_ASSOCIATIONS = 1;
 PLAYER_NAME = "Stranger";
+
 let timerElem = document.getElementById('timer');
-function initialize(num_buttons){
+function initialize(){
     buttonsInput = document.getElementById("numButtons").value;
+    associationsInput = document.getElementById("numAssociations").value;
     PLAYER_NAME = document.getElementById("playerName").value;
-    DURATION = document.getElementById("duration").value;
-    NUM_BUTTONS = buttonsInput == ""? DEFAULT_NUM: parseInt(buttonsInput);
-    NUM_BUTTONS = NUM_BUTTONS < 1? DEFAULT_NUM: NUM_BUTTONS;
+    durationInput = document.getElementById("duration").value;
+    DURATION = isValidNum(durationInput)? durationInput: DEFAULT_DURATION;
+    num_buttons_input = parseInt(buttonsInput);
+    num_associations_input = parseInt(associationsInput);
+    NUM_BUTTONS = isValidNum(num_buttons_input)?num_buttons_input: DEFAULT_NUM_BUTTONS;
+    NUM_ASSOCIATIONS = isValidNum(num_associations_input)?num_associations_input: DEFAULT_NUM_ASSOCIATIONS;
     HORIZONTAL_FACTOR = Math.floor(Math.sqrt(NUM_BUTTONS));
     console.log('HORIZONTAL_FACTOR', HORIZONTAL_FACTOR);
     document.getElementById('introduction').classList.add('hidden');
@@ -22,6 +30,10 @@ function initialize(num_buttons){
     timeLeft = DURATION;
     timerId = setInterval(countDown,1000);
 
+}
+
+function isValidNum(value){
+  return !isNaN(value) && isFinite(value) && value > 1
 }
 
 function countDown() {
@@ -66,8 +78,10 @@ function initializeButtons(){
 
     }
     for(i=0; i< NUM_BUTTONS; i++){
-       findPartner(i);
+       findPartners(i);
     }
+
+    console.log("AssociationMap: ",ASSOCIATION_MAP)
 }
 
 function validateForm(){
@@ -78,9 +92,14 @@ function validateForm(){
 function flipState(event){
      let targetElement = event.target;
      index = parseInt(targetElement.innerHTML) - 1;
-     let partnerElement = ASSOCIATION_MAP[index];
      flipColor(targetElement);
-     flipColor(partnerElement);
+     let partnerElements = ASSOCIATION_MAP[index];
+     console.log("partner elements of index: ",index," are: ",partnerElements)
+     for (let i= 0; i < partnerElements.length; i++){
+        let partnerElement = partnerElements[i];
+        flipColor(partnerElement);
+     }
+
      if (gameWon()){
          endGame(true);
      }
@@ -99,19 +118,28 @@ function gameWon(){
 
 
 function flipColor(element){
-  if (element.style.backgroundColor == OFF_COLOR){
-      element.style.backgroundColor = ON_COLOR;
-  }else{
-      element.style.backgroundColor = OFF_COLOR;
-  }
+  element.style.backgroundColor = (element.style.backgroundColor == OFF_COLOR)? ON_COLOR: OFF_COLOR;
 }
 
-function findPartner(index){
-    while(true) {
+function getValidPartner(index, partnerIndexes){
+    while(true){
       let curr_index = (Math.floor(Math.random() * (NUM_BUTTONS)) + 1) -1;
-      if (curr_index != index ){
-          ASSOCIATION_MAP[index] = BUTTONS[curr_index];
-          break;
+      if (curr_index != index && !(partnerIndexes.has(curr_index))){
+          return curr_index;
+      }
+    }
+}
+
+
+function findPartners(index){
+    let partnerIndexes = new Set()
+    for (let i=0; i<NUM_ASSOCIATIONS; i++) {
+      let partner_index = getValidPartner(index,partnerIndexes);
+      partnerIndexes.add(partner_index);
+      if (index in ASSOCIATION_MAP) {
+        ASSOCIATION_MAP[index].push(BUTTONS[partner_index]);
+      }else{
+        ASSOCIATION_MAP[index] = [BUTTONS[partner_index]];
       }
     }
 }
